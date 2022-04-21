@@ -21,6 +21,12 @@ namespace WeatherConcurrencyApp
         {
             InitializeComponent();
             this.httpOpenWeatherClient = httpOpenWeatherClient;
+            //List<OpenWeatherCities> cities = httpOpenWeatherClient.GetCities();
+            //if (cities.Count != 0)
+            //{
+            //    MessageBox.Show("Test");
+            //}
+            //comboBox1.DataSource = cities.Select(x => x.Name).ToList();
         }
 
         private void btnOk_Click(object sender, EventArgs e)
@@ -45,7 +51,13 @@ namespace WeatherConcurrencyApp
 
         public async Task Request()
         {
-           openWeather = await httpOpenWeatherClient.GetWeatherByCityNameAsync("Managua");
+            openWeather = await httpOpenWeatherClient.GetWeatherByCityNameAsync(textBox1.Text);
+            //openWeather = await httpOpenWeatherClient.GetWeatherByCityNameAsync(comboBox1.SelectedValue.ToString());
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

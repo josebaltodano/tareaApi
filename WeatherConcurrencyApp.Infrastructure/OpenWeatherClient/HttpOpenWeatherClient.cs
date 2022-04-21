@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,6 +42,20 @@ namespace WeatherConcurrencyApp.Infrastructure.OpenWeatherClient
         {
             string imageLocation = $"{AppSettings.Image}{ow.Weather[0].Icon}.png";
             return imageLocation;
+        }
+
+        public List<OpenWeatherCities> GetCities()
+        {
+            //List<OpenWeatherCities> cities;
+            //using (StreamReader file = File.OpenText(AppSettings.Cities))
+            //{
+            //    JsonSerializer serializer = new JsonSerializer();
+            //    cities = (List<OpenWeatherCities>)serializer.Deserialize(file, typeof(List<OpenWeather>));
+            //}
+            //return cities;
+
+            List<OpenWeatherCities> cities = JsonConvert.DeserializeObject<List<OpenWeatherCities>>(File.ReadAllText(AppSettings.Cities));
+            return cities;
         }
     }
 }

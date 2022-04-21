@@ -17,6 +17,11 @@ namespace WeatherConcurrencyApp.AppCore.Services
             this.openWeatherClient = openWeatherClient;
         }
 
+        public List<OpenWeatherCities> GetCities()
+        {
+            return openWeatherClient.GetCities();
+        }
+
         public string GetImage(OpenWeather ow)
         {
             return openWeatherClient.GetImage(ow);

@@ -90,6 +90,7 @@ namespace WeatherConcurrencyApp
             this.lblCity.TabIndex = 0;
             this.lblCity.Text = "City";
             this.lblCity.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblCity.Click += new System.EventHandler(this.lblCity_Click);
             // 
             // lblWeather
             // 

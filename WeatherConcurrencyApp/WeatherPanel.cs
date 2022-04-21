@@ -53,5 +53,10 @@ namespace WeatherConcurrencyApp
             flpContent.Controls.Add(new DetailsWeather("Sunrise", openWeather.Sys.Sunrise.ToString()));
             flpContent.Controls.Add(new DetailsWeather("Sunset", openWeather.Sys.Sunset.ToString()));
         }
+
+        private void lblCity_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
