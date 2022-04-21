@@ -17,16 +17,23 @@ namespace WeatherConcurrencyApp
     {
         public IHttpOpenWeatherClientService httpOpenWeatherClient;
         public OpenWeather openWeather;
+        List<OpenWeatherCities> cities;
         public FrmMain(IHttpOpenWeatherClientService httpOpenWeatherClient)
         {
             InitializeComponent();
             this.httpOpenWeatherClient = httpOpenWeatherClient;
-            //List<OpenWeatherCities> cities = httpOpenWeatherClient.GetCities();
-            //if (cities.Count != 0)
-            //{
-            //    MessageBox.Show("Test");
-            //}
-            //comboBox1.DataSource = cities.Select(x => x.Name).ToList();
+            cities = httpOpenWeatherClient.GetCities();
+            if (cities.Count != 0)
+            {
+                MessageBox.Show("Test");
+            }
+            comboBox1.DataSource = cities.Select(x => x.Name).ToList();
+
+            comboBox1.AutoCompleteMode = AutoCompleteMode.Suggest;
+            comboBox1.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            AutoCompleteStringCollection combData = new AutoCompleteStringCollection();
+            getData(combData);
+            comboBox1.AutoCompleteCustomSource = combData;
         }
 
         private void btnOk_Click(object sender, EventArgs e)
@@ -51,13 +58,20 @@ namespace WeatherConcurrencyApp
 
         public async Task Request()
         {
-            openWeather = await httpOpenWeatherClient.GetWeatherByCityNameAsync(textBox1.Text);
-            //openWeather = await httpOpenWeatherClient.GetWeatherByCityNameAsync(comboBox1.SelectedValue.ToString());
+            //openWeather = await httpOpenWeatherClient.GetWeatherByCityNameAsync(textBox1.Text);
+            openWeather = await httpOpenWeatherClient.GetWeatherByCityNameAsync(comboBox1.SelectedValue.ToString());
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+        private void getData(AutoCompleteStringCollection dataCollection)
+        {
+            foreach (OpenWeatherCities city in cities)
+            {
+                dataCollection.Add(city.Name);
+            }
         }
     }
 }
