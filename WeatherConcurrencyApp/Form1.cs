@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WeatherConcurrencyApp.AppCore.Interfaces;
 using WeatherConcurrencyApp.Infrastructure.OpenWeatherClient;
 using WeatherConcurrentApp.Domain.Entities;
 
@@ -14,12 +15,12 @@ namespace WeatherConcurrencyApp
 {
     public partial class FrmMain : Form
     {
-        public HttpOpenWeatherClient httpOpenWeatherClient;
+        public IHttpOpenWeatherClientService httpOpenWeatherClient;
         public OpenWeather openWeather;
-        public FrmMain()
+        public FrmMain(IHttpOpenWeatherClientService httpOpenWeatherClient)
         {
-            httpOpenWeatherClient = new HttpOpenWeatherClient();
             InitializeComponent();
+            this.httpOpenWeatherClient = httpOpenWeatherClient;
         }
 
         private void btnOk_Click(object sender, EventArgs e)
@@ -31,8 +32,8 @@ namespace WeatherConcurrencyApp
                 {
                     throw new NullReferenceException("Fallo al obtener el objeto OpeWeather.");
                 }
-
-                WeatherPanel weatherPanel = new WeatherPanel();
+                string imageLocation = httpOpenWeatherClient.GetImage(openWeather);
+                WeatherPanel weatherPanel = new WeatherPanel(openWeather, imageLocation);
                 flpContent.Controls.Add(weatherPanel);
             }
             catch (Exception)

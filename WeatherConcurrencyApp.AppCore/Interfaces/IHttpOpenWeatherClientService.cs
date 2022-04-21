@@ -4,11 +4,11 @@ using System.Text;
 using System.Threading.Tasks;
 using WeatherConcurrentApp.Domain.Entities;
 
-namespace WeatherConcurrentApp.Domain.Interfaces
+namespace WeatherConcurrencyApp.AppCore.Interfaces
 {
-    public interface IHttpOpenWeatherClient
+    public interface IHttpOpenWeatherClientService
     {
-       Task<OpenWeather> GetWeatherByCityNameAsync(string city);
+        Task<OpenWeather> GetWeatherByCityNameAsync(string city);
         string GetImage(OpenWeather ow);
     }
 }

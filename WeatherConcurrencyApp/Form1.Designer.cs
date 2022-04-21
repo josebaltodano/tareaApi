@@ -38,10 +38,10 @@ namespace WeatherConcurrencyApp
             // flpContent
             // 
             this.flpContent.AutoScroll = true;
-            this.flpContent.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flpContent.Location = new System.Drawing.Point(0, 79);
+            this.flpContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flpContent.Location = new System.Drawing.Point(0, 0);
             this.flpContent.Name = "flpContent";
-            this.flpContent.Size = new System.Drawing.Size(645, 428);
+            this.flpContent.Size = new System.Drawing.Size(645, 507);
             this.flpContent.TabIndex = 0;
             // 
             // panel1

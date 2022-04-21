@@ -12,9 +12,12 @@ namespace WeatherConcurrencyApp
 {
     public partial class DetailsWeather : UserControl
     {
-        public DetailsWeather()
+        public DetailsWeather(string detail, string value)
         {
             InitializeComponent();
+
+            this.lblDetail.Text = detail;
+            this.lblDetailValue.Text = value;
         }
     }
 }

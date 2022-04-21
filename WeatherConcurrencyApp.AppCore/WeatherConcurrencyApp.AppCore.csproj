@@ -6,11 +6,9 @@
 
   <ItemGroup>
     <PackageReference Include="Autofac" Version="6.3.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\WeatherConcurrencyApp.Common\WeatherConcurrencyApp.Common.csproj" />
     <ProjectReference Include="..\WeatherConcurrentApp.Domain\WeatherConcurrentApp.Domain.csproj" />
   </ItemGroup>
 

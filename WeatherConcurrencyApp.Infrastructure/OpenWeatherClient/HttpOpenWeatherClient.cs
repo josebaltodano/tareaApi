@@ -14,7 +14,7 @@ namespace WeatherConcurrencyApp.Infrastructure.OpenWeatherClient
         public async Task<OpenWeather> GetWeatherByCityNameAsync(string city)
         {
            
-            string url = $"{AppSettings.ApiUrl}{city}&units={AppSettings.units}&lang=sp&appid={AppSettings.Token}";
+            string url = $"{AppSettings.ApiUrl}{city}&units={AppSettings.Units}&lang=sp&appid={AppSettings.Token}";
             string jsonObject = string.Empty;
             try
             {
@@ -35,6 +35,11 @@ namespace WeatherConcurrencyApp.Infrastructure.OpenWeatherClient
                 throw;
             }
            
+        }
+        public string GetImage(OpenWeather ow)
+        {
+            string imageLocation = $"{AppSettings.Image}{ow.Weather[0].Icon}.png";
+            return imageLocation;
         }
     }
 }

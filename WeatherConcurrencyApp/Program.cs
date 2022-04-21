@@ -1,8 +1,13 @@
-﻿using System;
+﻿using Autofac;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WeatherConcurrencyApp.AppCore.Interfaces;
+using WeatherConcurrencyApp.AppCore.Services;
+using WeatherConcurrencyApp.Infrastructure.OpenWeatherClient;
+using WeatherConcurrentApp.Domain.Interfaces;
 
 namespace WeatherConcurrencyApp
 {
@@ -16,7 +21,13 @@ namespace WeatherConcurrencyApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmMain());
+
+            var builder = new ContainerBuilder();
+            builder.RegisterType<HttpOpenWeatherClient>().As<IHttpOpenWeatherClient>();
+            builder.RegisterType<HttpOpenWeatherClientService>().As<IHttpOpenWeatherClientService>();
+            var container = builder.Build();
+
+            Application.Run(new FrmMain(container.Resolve<IHttpOpenWeatherClientService>()));
         }
     }
 }

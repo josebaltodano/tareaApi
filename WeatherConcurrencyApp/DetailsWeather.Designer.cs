@@ -36,19 +36,20 @@ namespace WeatherConcurrencyApp
             // lblDetail
             // 
             this.lblDetail.AutoSize = true;
-            this.lblDetail.Location = new System.Drawing.Point(3, 9);
+            this.lblDetail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDetail.Location = new System.Drawing.Point(33, 12);
             this.lblDetail.Name = "lblDetail";
-            this.lblDetail.Size = new System.Drawing.Size(75, 13);
+            this.lblDetail.Size = new System.Drawing.Size(93, 16);
             this.lblDetail.TabIndex = 0;
             this.lblDetail.Text = "DetailWeather";
             // 
             // lblDetailValue
             // 
             this.lblDetailValue.AutoSize = true;
-            this.lblDetailValue.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDetailValue.Location = new System.Drawing.Point(19, 44);
+            this.lblDetailValue.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDetailValue.Location = new System.Drawing.Point(45, 45);
             this.lblDetailValue.Name = "lblDetailValue";
-            this.lblDetailValue.Size = new System.Drawing.Size(57, 18);
+            this.lblDetailValue.Size = new System.Drawing.Size(53, 18);
             this.lblDetailValue.TabIndex = 1;
             this.lblDetailValue.Text = "Value";
             // 
@@ -59,7 +60,7 @@ namespace WeatherConcurrencyApp
             this.Controls.Add(this.lblDetailValue);
             this.Controls.Add(this.lblDetail);
             this.Name = "DetailsWeather";
-            this.Size = new System.Drawing.Size(106, 74);
+            this.Size = new System.Drawing.Size(151, 81);
             this.ResumeLayout(false);
             this.PerformLayout();
 
