@@ -44,18 +44,25 @@ namespace WeatherConcurrencyApp.Infrastructure.OpenWeatherClient
             return imageLocation;
         }
 
-        public List<OpenWeatherCities> GetCities()
+        public List<OpenWeatherCities> GetCities(byte[] byteArray)
         {
-            //List<OpenWeatherCities> cities;
-            //using (StreamReader file = File.OpenText(AppSettings.Cities))
-            //{
-            //    JsonSerializer serializer = new JsonSerializer();
-            //    cities = (List<OpenWeatherCities>)serializer.Deserialize(file, typeof(List<OpenWeather>));
-            //}
-            //return cities;
 
-            List<OpenWeatherCities> cities = JsonConvert.DeserializeObject<List<OpenWeatherCities>>(File.ReadAllText(AppSettings.Cities));
-            return cities;
+            string jsonStr = Encoding.UTF8.GetString(byteArray);
+            return JsonConvert.DeserializeObject<List<OpenWeatherCities>>(jsonStr);
         }
+
+        //public List<OpenWeatherCities> GetCities()
+        //{
+        //    //List<OpenWeatherCities> cities;
+        //    //using (StreamReader file = File.OpenText(AppSettings.Cities))
+        //    //{
+        //    //    JsonSerializer serializer = new JsonSerializer();
+        //    //    cities = (List<OpenWeatherCities>)serializer.Deserialize(file, typeof(List<OpenWeather>));
+        //    //}
+        //    //return cities;
+
+        //    List<OpenWeatherCities> cities = JsonConvert.DeserializeObject<List<OpenWeatherCities>>(File.ReadAllText(AppSettings.Cities));
+        //    return cities;
+        //}
     }
 }

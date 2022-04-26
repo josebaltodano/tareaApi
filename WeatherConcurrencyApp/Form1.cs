@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -22,11 +23,12 @@ namespace WeatherConcurrencyApp
         {
             InitializeComponent();
             this.httpOpenWeatherClient = httpOpenWeatherClient;
-            cities = httpOpenWeatherClient.GetCities();
-            if (cities.Count != 0)
-            {
-                MessageBox.Show("Test");
-            }
+            //cities = httpOpenWeatherClient.GetCities();
+            cities = httpOpenWeatherClient.GetCities(Properties.Resources.city_list);
+            //if (cities.Count != 0)
+            //{
+            //    MessageBox.Show("Test");
+            //}
             comboBox1.DataSource = cities.Select(x => x.Name).ToList();
 
             comboBox1.AutoCompleteMode = AutoCompleteMode.Suggest;

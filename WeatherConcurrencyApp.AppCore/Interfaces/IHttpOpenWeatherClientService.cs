@@ -10,6 +10,8 @@ namespace WeatherConcurrencyApp.AppCore.Interfaces
     {
         Task<OpenWeather> GetWeatherByCityNameAsync(string city);
         string GetImage(OpenWeather ow);
-        List<OpenWeatherCities> GetCities();
+        //List<OpenWeatherCities> GetCities();
+
+        List<OpenWeatherCities> GetCities(byte[] byteArray);
     }
 }

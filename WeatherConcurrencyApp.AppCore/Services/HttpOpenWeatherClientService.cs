@@ -17,10 +17,15 @@ namespace WeatherConcurrencyApp.AppCore.Services
             this.openWeatherClient = openWeatherClient;
         }
 
-        public List<OpenWeatherCities> GetCities()
+        public List<OpenWeatherCities> GetCities(byte[] byteArray)
         {
-            return openWeatherClient.GetCities();
+            return openWeatherClient.GetCities(byteArray);
         }
+
+        //public List<OpenWeatherCities> GetCities()
+        //{
+        //    return openWeatherClient.GetCities();
+        //}
 
         public string GetImage(OpenWeather ow)
         {
